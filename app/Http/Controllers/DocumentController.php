@@ -92,8 +92,10 @@ class DocumentController extends Controller
                         if ($pivot->course == $curso->_id) {
                             if ($document['code_course'] === NULL) {
                                 $document['code_course'] = $curso->code;
+                                $document['name_course'] = $curso->name;
                             } else {
                                 $document['code_course'] = $document['code_course'] . ' - ' . $curso->code;
+                                $document['name_course'] = $document['name_course'] . ' - ' . $curso->name;
                             }
                         }
                     }

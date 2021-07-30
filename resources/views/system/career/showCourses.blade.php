@@ -52,32 +52,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($careers as $career)
+                            @foreach ($cursos as $curso)
                                 @php
                                     $count = 0;
                                 @endphp
                                 @foreach ($career_courses as $pivot)
-                                    @if ($career->_id == $pivot->career)
+                                    @if ($curso->_id == $pivot->course)
                                         @php
                                             $count++;
                                         @endphp
                                     @endif
                                 @endforeach
                                 <tr>
-                                    <td>{{$career->name}}</td>
-                                    <td>{{$career->code}}</td>
+                                    <td>{{$curso->name}}</td>
+                                    <td>{{$curso->code}}</td>
                                     <td>{{$count}}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="{{ route('showCourses', $career->_id) }}" class="btn btn-sm btn-warning"><i class="fa fa-search"></i></a>
+                                            <a href="{{ route('showDocuments', $curso->_id) }}" class="btn btn-sm btn-warning"><i class="fa fa-search"></i></a>
                                             @if (Auth::check() && auth()->user()->is_admin == 1)
-                                                <a href="{{route('career.edit', $career->_id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_career-{{$career->_id}}"><i class="fa fa-trash"></i>
+                                                <a href="{{route('curso.edit', $curso->_id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_curso-{{$curso->_id}}"><i class="fa fa-trash"></i>
                                             @endif
                                         </div>
                                     </td>
                                 </tr>
-                                <div class="modal modal-danger fade" id="eliminar_career-{{$career->_id}}" style="display: none;">
+                                <div class="modal modal-danger fade" id="eliminar_curso-{{$curso->_id}}" style="display: none;">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -86,10 +86,10 @@
                                                 <h4 class="modal-title">Eliminar</h4>
                                             </div>
                                             <div class="modal-body">
-                                                    <strong> Si presiona continuar los datos no podrán ser recuperados.</strong><br> ¿Esta seguro que desea eliminar "{{($career->name)}}"?
+                                                    <strong> Si presiona continuar los datos no podrán ser recuperados.</strong><br> ¿Esta seguro que desea eliminar "{{($curso->name)}}"?
                                             </div>
                                             <div class="modal-footer">
-                                                <form class="" action="{{route('career.destroy', $career->_id)}}" method="post">
+                                                <form class="" action="{{route('course.destroy', $curso->_id)}}" method="post">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                                     @csrf
                                                     {{method_field('DELETE')}}

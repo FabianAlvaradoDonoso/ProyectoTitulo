@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\Career;
 use App\Models\Career_Course;
+use App\Models\Course;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class CareerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'showCourses']);
     }
      /**
      * Display a listing of the resource.
@@ -138,5 +139,21 @@ class CareerController extends Controller
         } else {
             return redirect()->route('career.index')->with('error','No tienes las credenciales correspondientes para ejecutar esta acción.');
         }
+    }
+
+
+    public function showCourses($id){
+
+        $career_coursesDB = DB::table('career_courses')->where('career', '=', $id)->get();
+        $career = Career::find($id);
+        $career_courses = Career_Course::all();
+        $cursos = Array();
+
+        foreach($career_coursesDB as $career){
+            $curso = Course::find($career['course']);
+            array_push($cursos, $curso);
+        }
+        // dd($cursos);
+        return view('system.career.showCourses', compact('cursos', 'career_courses'));
     }
 }

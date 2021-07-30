@@ -68,14 +68,13 @@
                                     <td>{{$course->code}}</td>
                                     <td>{{$count}}</td>
                                     <td class="text-center">
+                                        <div class="btn-group">
+                                            <a href="{{route('showDocuments', $course->id)}}" class="btn btn-sm btn-warning"><i class="fa fa-search"></i></a>
                                         @if (Auth::check() && auth()->user()->is_admin == 1)
-                                            <div class="btn-group">
-                                                <a href="{{route('course.edit', $course->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_course-{{$course->id}}"><i class="fa fa-trash"></i>
-                                            </div>
-                                        @else
-                                            Sin permisos
+                                            <a href="{{route('course.edit', $course->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_course-{{$course->id}}"><i class="fa fa-trash"></i>
                                         @endif
+                                        </div>
                                     </td>
                                 </tr>
                                 <div class="modal modal-danger fade" id="eliminar_course-{{$course->id}}" style="display: none;">

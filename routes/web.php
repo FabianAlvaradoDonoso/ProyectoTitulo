@@ -21,6 +21,9 @@ Auth::routes();
 
 Route::get('/', function () { return view('system.dashboard'); })->name('dashboard');
 
+Route::get('course/{id}', [CourseController::class, 'showDocuments'])->name('showDocuments');
+Route::get('career/{id}', [CareerController::class, 'showCourses'])->name('showCourses');
+
 Route::resource('career', CareerController::class);
 Route::resource('course', CourseController::class);
 Route::resource('document', DocumentController::class);

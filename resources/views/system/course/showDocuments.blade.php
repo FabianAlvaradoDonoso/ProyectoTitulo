@@ -2,7 +2,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Documentos
+            {{ $course->name }} ({{$course->code}})
             <small>Listado</small>
             @if (Auth::check())
                 <a href="{{ route('document.create') }}" class="btn btn-info btn-sm"><i class="fa fa-plus"></i></a>
@@ -60,7 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($documents as $document)
+                                @foreach ($documentos as $document)
                                     @if (Auth::Check() && auth()->user()->_id == $document->user)
                                         @if ($document->size >= 1000000)
                                             @php
@@ -147,7 +147,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($documents as $document)
+                            @foreach ($documentos as $document)
                                 {{-- @if (Auth::Check() && auth()->user()->_id != $document->user) --}}
 
                                     @if ($document->size >= 1000000)
@@ -170,7 +170,7 @@
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a href="{{ route('document.show', $document->_id) }}" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                                @if (Auth::check() && auth()->user()->is_admin == 1)
+                                                @if (Auth::check() && (auth()->user()->is_admin == 1 || auth()->user()->_id == $document->user))
                                                     <a href="{{ route('document.edit', $document->_id) }}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_document-{{ $document->_id }}"><i class="fa fa-trash"></i>
                                                 @endif

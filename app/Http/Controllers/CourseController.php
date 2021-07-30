@@ -10,12 +10,13 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use PhpParser\Node\Expr\Cast\Array_;
 
 class CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'showDocuments']);
 
     }
 
@@ -198,5 +199,44 @@ class CourseController extends Controller
         } else {
             return redirect()->route('course.index')->with('error','No tienes las credenciales correspondientes para ejecutar esta acción.');
         }
+    }
+
+    public function showDocuments($id)
+    {
+        // mostrar todos los documentos de ese curso
+
+        $course_documents = DB::table('course_documents')->where('course', '=', $id)->get();
+        $course = Course::find($id);
+        $documentos = Array();
+        $permitidos = array(
+            array(
+                "id" => "application/pdf",
+                "type" => "PDF"
+            ),
+            array(
+                "id" => "application/msword",
+                "type" => "WORD"
+            ),
+            array(
+                "id" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "type" => "WORD"
+            ),
+            array(
+                "id" => "text/plain",
+                "type" => "TXT"
+            )
+        );
+        foreach($course_documents as $documents){
+            $document = Document::find($documents['document']);
+
+            for ($i = 0; $i < count($permitidos); $i++) {
+                if ($permitidos[$i]['id'] == $document->type) {
+                    $document['type_id'] = $permitidos[$i]['type'];
+                }
+            }
+            array_push($documentos, $document);
+        }
+        // dd($documentos);
+        return view('system.course.showDocuments', compact('documentos', 'course'));
     }
 }
