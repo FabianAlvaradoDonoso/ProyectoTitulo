@@ -2,8 +2,8 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Inicio
-            <small>Dashboard</small>
+            Bienvenido
+            {{-- <small>Dashboard</small> --}}
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -11,12 +11,10 @@
     </section>
 
 
-
-
     <section class="content">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ session('status') }}</h3>
+                <h3 class="box-title">Sesin Iniciada como ADMIN <b>{{ auth()->user()->name }}</b></h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -27,7 +25,19 @@
                 </div>
             </div>
             <div class="box-body">
-                Logeado como ADMIN.
+                Bienvenido a Archivos UTEM, una aplicación para compartir documentos académicos de forma segura con el resto de la comunidad.
+                Todo aporte a este gran repositorio servirá para crear una gran biblioteca en los momentos de estudios de todos dentro de la Universidad.
+                <br><br>
+                <b>Como Admin, puedes modificar cualquier atributo dentro de la aplicación. Usa tus poderes con sabiduría. Puedes agregar, modificar o eliminar tanto
+                carreras o cursos, como también documentos de cualquier usuario. Tu misión es mantener una biblioteca virtual libre de documentos falsos o perjudiciales.
+                Contamos contigo.</b>
+                <br><br>
+                Esta iniciativa es parte de un Trabajo de Título para la carrera de Ingeniería Civil en Computación mención Informática, por lo que cualquier consulta o mejora,
+                por favor de hacer un Pull Request al repositorio de <a href="https://github.com/FabianAlvaradoDonoso/ProyectoTitulo" target="_blank"><b>Github</b></a>
+                <br><br>
+                En caso de faltar información sobre alguna carrera o curso específico que no esté en la lista, por favor comunícate con
+                <a href="mailto:fabian.alvaradod@utem.cl"><b>fabian.alvaradod@utem.cl</b></a> para poder resolverlo.
+
             </div>
         </div>
     </section>

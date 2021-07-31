@@ -22,10 +22,10 @@ Auth::routes();
 
 Route::get('/', function () { return view('system.dashboard'); })->name('dashboard');
 
-Route::get('career/{id}', [CareerController::class, 'showCourses'])->name('showCourses');
+Route::get('career/show/{id}', [CareerController::class, 'showCourses'])->name('showCourses');
 Route::resource('career', CareerController::class);
 
-Route::get('course/{id}', [CourseController::class, 'showDocuments'])->name('showDocuments');
+Route::get('course/show/{id}', [CourseController::class, 'showDocuments'])->name('showDocuments');
 Route::resource('course', CourseController::class);
 
 Route::resource('document', DocumentController::class);

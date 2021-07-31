@@ -20,9 +20,8 @@
             </div>
         @endif
         <div class="login-logo" style="color: rgb(255,255,255)">
-            <a href="../../index2.html" style="color: rgb(255,255,255)"><b style="color: rgb(255,255,255)">Archivos</b>UTEM</a>
+            <a href="{{ route('dashboard') }}" style="color: rgb(255,255,255)"><b style="color: rgb(255,255,255)">Archivos</b>UTEM</a>
         </div>
-        <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Accede para comenzar sesión</p>
 
@@ -46,18 +45,20 @@
                             class="text-center btn btn-primary btn-block btn-flat">Registrarse</a>
                     </div>
                     <div class="col-xs-4"></div>
-                    <!-- /.col -->
                     <div class="col-xs-4">
                         <button type="submit" class="btn btn-success btn-block btn-flat">Acceder</button>
                     </div>
-                    <!-- /.col -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="login-box-msg">En caso de olvidar contraseña, mandar correo a:
+                            <a href="mailto:fabian.alvaradod@utem.cl" target="_blank">fabian.alvaradod@utem.cl</a>
+                        </p>
+                    </div>
                 </div>
             </form>
 
-            {{-- <a href="#">Olvide mi contraseña</a><br> --}}
-
         </div>
-        <!-- /.login-box-body -->
     </div>
-    <!-- /.login-box -->
 @endsection

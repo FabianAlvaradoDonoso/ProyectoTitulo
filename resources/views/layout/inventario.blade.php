@@ -108,7 +108,7 @@
                                 </ul>
                             @else
                                 <a href="{{ route('login') }}" class="dropdown-toggle">
-                                    <span class="hidden-xs">Login</span>
+                                    <span class="hidden-xs">Acceder</span>
                                 </a>
                                 {{-- <span class="hidden-xs">No login</span> --}}
                             @endif
@@ -127,11 +127,29 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MENU</li>
-                    <li>
-                        <a href="{{ url('/') }}">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        </a>
-                    </li>
+
+                    @if (Auth::check() && auth()->user()->is_admin == 1)
+                        <li>
+                            <a href="{{ route('admin.home') }}">
+                                <i class="fa fa-dashboard"></i> <span>Inicio</span>
+                            </a>
+                        </li>
+                    @else
+                        @if (Auth::check() && auth()->user()->is_admin == 0)
+                            <li>
+                                <a href="{{ route('home') }}">
+                                    <i class="fa fa-dashboard"></i> <span>Inicio</span>
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('dashboard') }}">
+                                    <i class="fa fa-dashboard"></i> <span>Inicio</span>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
                     <li>
                         <a href="{{ url('/career') }}">
                             <i class="fa fa-university"></i> <span>Carreras</span>
@@ -163,12 +181,14 @@
         <!-- /.content-wrapper -->
 
         <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0.0
-            </div>
             <strong>Copyright &copy; 2021 <a href="https://www.utem.cl/">
                     <font color=green>UTEM</font>
                 </a>.</strong> Todos los derechos reservados.
+            <div class="pull-right hidden-xs">
+                <a class="btn btn-sm btn-social-icon btn-github" href="https://github.com/FabianAlvaradoDonoso/ProyectoTitulo" target="_blank"><i class="fa fa-github"></i></a>
+                <a class="btn btn-sm btn-social-icon btn-google" href="mailto:fabian.alvaradod@utem.cl" target="_blank"><i class="fa fa-envelope"></i></a>
+                <b>Version</b> 1.0.0
+            </div>
         </footer>
 
     </div>

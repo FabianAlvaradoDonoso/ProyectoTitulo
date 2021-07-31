@@ -71,7 +71,7 @@
                                         <div class="btn-group">
                                             <a href="{{ route('showDocuments', $curso->_id) }}" class="btn btn-sm btn-warning"><i class="fa fa-search"></i></a>
                                             @if (Auth::check() && auth()->user()->is_admin == 1)
-                                                <a href="{{route('curso.edit', $curso->_id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{route('course.edit', $curso->_id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar_curso-{{$curso->_id}}"><i class="fa fa-trash"></i>
                                             @endif
                                         </div>

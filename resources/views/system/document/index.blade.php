@@ -225,7 +225,7 @@
                     "loadingRecords": "Cargando...",
                     "processing": "Procesando...",
                     "search": "",
-                    "searchPlaceholder": "Buscar",
+                    "searchPlaceholder": "Buscar codigo o carrera",
                     "zeroRecords": "No se han encontrado coincidencias.",
                     "paginate": {
                         "first": "Primera",
@@ -278,7 +278,7 @@
                     "loadingRecords": "Cargando...",
                     "processing": "Procesando...",
                     "search": "",
-                    "searchPlaceholder": "Buscar",
+                    "searchPlaceholder": "Buscar codigo o carrera",
                     "zeroRecords": "No se han encontrado coincidencias.",
                     "paginate": {
                         "first": "Primera",

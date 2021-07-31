@@ -19,7 +19,7 @@
             </div>
         @endif
         <div class="register-logo">
-            <a href="../../index2.html" style="color: rgb(255,255,255)"><b style="color: rgb(255,255,255)">Archivos</b>UTEM</a>
+            <a href="{{ route('dashboard') }}" style="color: rgb(255,255,255)"><b style="color: rgb(255,255,255)">Archivos</b>UTEM</a>
         </div>
 
         <div class="register-box-body">
